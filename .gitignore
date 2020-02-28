@@ -1,0 +1,6 @@
+._*
+hass/secrets.yaml
+esphome/secrets.yaml
+plex-transcode
+plex-config
+*.log

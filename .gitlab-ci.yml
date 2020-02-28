@@ -13,7 +13,7 @@ esphome-builder:
 check:
   stage: pre-flight
   before_script:
-    - docker run -t --rm esphome-builder dummy.yaml version
+    - sh devops/esphome_wrapper.sh dummy.yaml version
   script:
     - |
       for file in $(find \
@@ -22,7 +22,7 @@ check:
         -name "*.yaml"\
         -not -name "secrets.yaml"
         ); do
-        docker run -t --rm esphome-builder $(basename $file) config
+        sh devops/esphome_wrapper.sh $(basename $file) config
       done
   tags:
     - home
@@ -35,7 +35,7 @@ check:
 office_temp_sensor:
   <<: *device-build
   script:
-    - docker run -t --rm --net=host esphome-builder temp-sensor-office.yaml run --no-logs
+    - sh devops/esphome_wrapper.sh temp-sensor-office.yaml run --no-logs
   only:
     refs:
       - master
@@ -45,7 +45,7 @@ office_temp_sensor:
 shop_lights_switch:
   <<: *device-build
   script:
-    - docker run -t --rm --net=host esphome-builder shop_lights_switch.yaml run --no-logs
+    - sh devops/esphome_wrapper.sh shop_lights_switch.yaml run --no-logs
   only:
     refs:
       - master
