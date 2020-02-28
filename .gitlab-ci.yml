@@ -22,7 +22,7 @@ check:
         -name "*.yaml"\
         -not -name "secrets.yaml"
         ); do
-        docker run -t --rm esphome-builder $file config
+        docker run -t --rm esphome-builder $(basename $file) config
       done
   tags:
     - home
