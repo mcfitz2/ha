@@ -6,7 +6,7 @@ esphome:
 wifi:
   ssid: "NETGEAR10"
   password: "fancyunicorn486"
-  use_address: desk_lamp_switch.local
+
 # Enable logging
 logger:
 
