@@ -36,8 +36,8 @@ check:
   only:
     refs:
       - master
-    changes:
-      - esphome/$YAML_FILE
+#    changes:
+#      - esphome/$YAML_FILE
 
 office_temp_sensor:
   variables:
