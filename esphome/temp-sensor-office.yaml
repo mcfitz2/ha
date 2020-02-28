@@ -23,7 +23,7 @@ i2c:
 sensor:
   - platform: bmp280
     temperature:
-      name: "Office Temperature2"
+      name: "Office Temperature"
       oversampling: 16x
     pressure:
       name: "Office Pressure"
