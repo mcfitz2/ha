@@ -17,5 +17,5 @@ ota:
 
 switch:
   - platform: gpio
-    name: "desk_lamp_power"
+    name: "Shop Lights"
     pin: GPIO12
