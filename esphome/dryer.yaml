@@ -1,0 +1,32 @@
+esphome:
+  name: dryer
+  platform: ESP8266
+  board: nodemcuv2
+
+wifi:
+  ssid: "NETGEAR10"
+  password: "fancyunicorn486"
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+
+sensor:
+  - platform: ct_clamp
+    sensor: adc_sensor
+    name: "Dryer Current"
+    update_interval: 5s
+    filters:
+      - calibrate_linear:
+          # Measured value of 0 maps to 0A
+          - 0 -> 0
+          - 0.466 -> 1.8
+  # Example source sensor
+  - platform: adc
+    pin: A0
+    id: adc_sensor

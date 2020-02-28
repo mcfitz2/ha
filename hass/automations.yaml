@@ -1,0 +1,142 @@
+- id: '1566255965810'
+  alias: Increment Litter Box Visits
+  trigger:
+  - entity_id: binary_sensor.litter_box_motion
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: counter.litter_box_visits
+    service: counter.increment
+- id: '1566256050140'
+  alias: Reset Litter Box Visits
+  trigger:
+  - at: 00:00
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: counter.litter_box_visits
+    service: counter.reset
+- id: '1566257520806'
+  alias: Reset Cheddar Feedings
+  trigger:
+  - at: '5:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: counter.cheddar_feedings
+    service: counter.reset
+- id: '1566432018987'
+  alias: Front Door While I'm Away
+  trigger:
+  - entity_id: binary_sensor.front_entry_door
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: device_tracker.micahs_phone
+    state: away
+  action:
+  - data:
+      message: Front door was opened
+    data_template:
+      message: ''
+      title: Front Door was Opened
+    service: notify.pushbullet
+- id: '1566596976279'
+  alias: Garage door left open
+  trigger:
+  - entity_id: device_tracker.micahs_phone
+    from: home
+    platform: state
+    to: away
+  condition:
+  - condition: state
+    entity_id: cover.garage_door
+    state: open
+  action:
+  - data:
+      message: You left the garage door open
+    service: notify.pushbullet
+- id: '1566597070259'
+  alias: Cheddar was fed
+  trigger:
+  - entity_id: binary_sensor.food_box
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: counter.cheddar_feedings
+    service: counter.increment
+- id: '1566671082124'
+  alias: you are away
+  trigger:
+  - entity_id: device_tracker.micahs_phone
+    from: home
+    platform: state
+    to: away
+  condition: []
+  action:
+  - data:
+      message: You are away from home
+    service: notify.pushbullet
+- id: '1566671115430'
+  alias: you are home
+  trigger:
+  - entity_id: device_tracker.micahs_phone
+    from: away
+    platform: state
+    to: home
+  condition: []
+  action:
+  - data:
+      message: You are home
+    service: notify.pushbullet
+- id: '1566671665651'
+  alias: Workday Away Actions
+  trigger:
+  - entity_id: device_tracker.micahs_phone
+    from: home
+    platform: state
+    to: away
+  condition:
+  - condition: state
+    entity_id: binary_sensor.workday_sensor
+    state: 'on'
+  action:
+  - data:
+      entity_id: climate.thermostat
+      preset_mode: away
+    service: climate.set_preset_mode
+- id: '1566858857228'
+  alias: Kitchen Button
+  trigger:
+  - entity_id: binary_sensor.kitchen_button
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.kitchen_light
+    service: switch.toggle
+- id: '1567738569935'
+  alias: Dryer is Done
+  trigger:
+  - entity_id: binary_sensor.dryer
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      entity_id: media_player.all_rooms
+      message: Dryer is done!
+    service: tts.google_translate_say

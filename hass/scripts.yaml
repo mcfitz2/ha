@@ -1,0 +1,61 @@
+---
+3d_printer_start:
+  sequence:
+    - data:
+        entity_id: switch.sonoff_100022c858
+      service: switch.turn_on
+    - delay: 00:00:20
+    - data:
+        entity_id: switch.preheat
+      service: switch.turn_on
+  alias: 3D Printer Activate
+stereo_tv:
+  sequence:
+    - data:
+        payload: send
+        topic: mqtt-lirc/Kenwood/KEY_CD
+      service: mqtt.publish
+  alias: TV Time
+stereo_chromecast:
+  sequence:
+    - data:
+        payload: send
+        topic: mqtt-lirc/Kenwood/tape1
+      service: mqtt.publish
+  alias: Stereo Time
+cheddar_feeding:
+  alias: Cheddar Feeding
+  sequence:
+    - data:
+        entity_id: counter.cheddar_feedings
+      service: counter.increment
+tv_start:
+  alias: tv_start
+  sequence:
+    - data:
+        entity_id: switch.tv_ir
+      service: switch.turn_on
+    - data:
+        entity_id: input_boolean.tv_assumed_state
+      service: input_boolean.turn_on
+tv_stop:
+  alias: tv_stop
+  sequence:
+    - data:
+        entity_id: switch.tv_ir
+      service: switch.turn_on
+    - data:
+        entity_id: input_boolean.tv_assumed_state
+      service: input_boolean.turn_off
+stereo_start:
+  alias: stereo_start
+  sequence:
+    - data:
+        entity_id: switch.Kenwood_IR
+      service: switch.turn_on
+stereo_stop:
+  alias: stereo_stop
+  sequence:
+    - data:
+        entity_id: switch.Kenwood_IR
+      service: switch.turn_on

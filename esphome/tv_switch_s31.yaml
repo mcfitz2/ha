@@ -1,0 +1,38 @@
+esphome:
+  name: tv_switch_s31
+  platform: ESP8266
+  board: esp01_1m
+
+wifi:
+  ssid: "NETGEAR10"
+  password: "fancyunicorn486"
+
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+# Example configuration entry
+# Disable logging over USB
+logger:
+  baud_rate: 0
+
+uart:
+  rx_pin: RX
+  baud_rate: 4800
+
+sensor:
+  - platform: cse7766
+    update_interval: 1s
+    current:
+      name: "TV Current"
+    voltage:
+      name: "TV Voltage"
+    power:
+      name: "TV Power"
+      
+switch:
+  - platform: gpio
+    name: "TV Power"
+    pin: GPIO12

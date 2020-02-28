@@ -1,0 +1,29 @@
+esphome:
+  name: garage_door_switch
+  platform: ESP8266
+  board: nodemcuv2
+
+wifi:
+  ssid: "NETGEAR10"
+  password: "fancyunicorn486"
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+switch:
+  - platform: gpio
+    pin: D6
+    id: relay
+    inverted: yes
+  - platform: template
+    name: "Garage Door Opener"
+    icon: "mdi:garage"
+    turn_on_action:
+    - switch.turn_on: relay
+    - delay: 500ms
+    - switch.turn_off: relay
