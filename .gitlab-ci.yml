@@ -27,14 +27,19 @@ check:
   tags:
     - home
 
-office_temp_sensor:
+.device-build: &device-build
   stage: device-build
   tags:
     - home
   script:
-    - docker run -t --rm --net=host esphome-builder temp-sensor-office.yaml run --no-logs
+    - docker run -t --rm --net=host esphome-builder $YAML_FILE run --no-logs
   only:
     refs:
       - master
     changes:
-      - esphome/temp-sensor-office.yaml
+      - esphome/$YAML_FILE
+
+office_temp_sensor:
+  variables:
+    - YAML_FILE="office-temp-sensor.yaml"
+  <<: *device-build
