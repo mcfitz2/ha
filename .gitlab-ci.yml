@@ -28,8 +28,11 @@ services:
 before_script:
   - docker info
 
-build:
+esphome-builder:
   stage: build
+  tags:
+    - home
   script:
+    - cp esphome/*.yaml devops/esphome-builder
     - docker build -t esphome-builder devops/esphome-builder
-    - docker run esphome-builder uptime
+    - docker run --rm -it esphome-builder temp-sensor-office.yaml run
