@@ -22,7 +22,7 @@ check:
         -name "*.yaml"\
         -not -name "secrets.yaml"
         ); do
-        docker run -it --rm esphome-builder $file config
+        docker run -t --rm esphome-builder $file config
       done
   tags:
     - home
@@ -32,7 +32,7 @@ office_temp_sensor:
   tags:
     - home
   script:
-    - docker run -it --rm esphome-builder temp-sensor-office.yaml run --no-logs
+    - docker run -t --rm esphome-builder temp-sensor-office.yaml run --no-logs
   only:
     refs:
       - master
