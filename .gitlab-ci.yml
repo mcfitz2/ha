@@ -35,4 +35,4 @@ esphome-builder:
   script:
     - cp esphome/*.yaml devops/esphome-builder
     - docker build -t esphome-builder devops/esphome-builder
-    - docker run --rm --net=host esphome-builder temp-sensor-office.yaml run
+    - docker run --rm --net=host esphome-builder temp-sensor-office.yaml run --no-logs
