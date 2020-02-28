@@ -41,5 +41,5 @@ check:
 
 office_temp_sensor:
   variables:
-    - YAML_FILE="office-temp-sensor.yaml"
+    - YAML_FILE: "office-temp-sensor.yaml"
   <<: *device-build
