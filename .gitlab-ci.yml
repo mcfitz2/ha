@@ -13,7 +13,7 @@ esphome-builder:
 check:
   stage: pre-flight
   before_script:
-    - docker run -it --rm esphome-builder dummy.yaml version
+    - docker run -t --rm esphome-builder dummy.yaml version
   script:
     - |
       for file in $(find \
