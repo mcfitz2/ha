@@ -33,5 +33,8 @@ office_temp_sensor:
     - home
   script:
     - docker run -it --rm esphome-builder temp-sensor-office.yaml run --no-logs
-  changes:
-    - esphome/temp-sensor-office.yaml
+  only:
+    refs:
+      - master
+    changes:
+      - esphome/temp-sensor-office.yaml
