@@ -31,15 +31,23 @@ check:
   stage: device-build
   tags:
     - home
+
+office_temp_sensor:
+  <<: *device-build
   script:
-    - docker run -t --rm --net=host esphome-builder $YAML_FILE run --no-logs
+    - docker run -t --rm --net=host esphome-builder temp-sensor-office.yaml run --no-logs
   only:
     refs:
       - master
     changes:
-      - esphome/$YAML_FILE
+      - esphome/temp-sensor-office.yaml
 
-office_temp_sensor:
-  variables:
-    YAML_FILE: "temp-sensor-office.yaml"
+shop_lights_switch:
   <<: *device-build
+  script:
+    - docker run -t --rm --net=host esphome-builder shop_lights_switch.yaml run --no-logs
+  only:
+    refs:
+      - master
+    changes:
+      - esphome/shop_lights_switch.yaml
