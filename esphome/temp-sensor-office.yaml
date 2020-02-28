@@ -29,6 +29,6 @@ sensor:
       name: "Office Pressure"
     
     address: 0x76
-    update_interval: 3s
+    update_interval: 4s
 
 
