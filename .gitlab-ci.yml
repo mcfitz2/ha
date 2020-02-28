@@ -32,7 +32,7 @@ office_temp_sensor:
   tags:
     - home
   script:
-    - docker run -t --rm esphome-builder temp-sensor-office.yaml run --no-logs
+    - docker run -t --rm --net=host esphome-builder temp-sensor-office.yaml run --no-logs
   only:
     refs:
       - master
