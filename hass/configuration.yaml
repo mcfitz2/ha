@@ -77,9 +77,9 @@ hacs:
 
 frontend:
   !include themes.yaml
-recorder:
-  db_url: !secret postgres_url
-  purge_keep_days: 90
+#recorder:
+#  db_url: !secret postgres_url
+#  purge_keep_days: 90
 ffmpeg:
   ffmpeg_bin: /usr/bin/ffmpeg
 
