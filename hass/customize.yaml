@@ -11,3 +11,6 @@ media_player.debaser:
   hidden: true
 sensor.prusa_mk3s_actual_bed_temp:
   unit_of_measurement: '°C' 
+binary_sensor.wyzesense_777fed33:
+  friendly_name: "Customized Sensor"
+
