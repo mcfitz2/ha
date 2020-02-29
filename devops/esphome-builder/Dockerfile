@@ -1,4 +1,5 @@
 FROM esphome/esphome:latest
+
 RUN pip3 install awscli awscli-plugin-endpoint
 RUN mkdir /root/.aws
 ADD aws-config /root/.aws/config
