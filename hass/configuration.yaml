@@ -74,8 +74,6 @@ counter:
   cheddar_feedings:
     initial: 0
     step: 1
-hacs:
-  token: !secret hacs_token
 
 frontend:
   !include themes.yaml
