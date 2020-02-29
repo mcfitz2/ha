@@ -3,19 +3,5 @@ esphome:
   platform: ESP8266
   board: esp01_1m
 
-wifi:
-  ssid: "NETGEAR10"
-  password: "fancyunicorn486"
-
-# Enable logging
-logger:
-
-# Enable Home Assistant API
-api:
-
-ota:
-
-switch:
-  - platform: gpio
-    name: "Shop Lights"
-    pin: GPIO12
+<<: !include common.yaml
+<<: !include sonoff_switch.yaml

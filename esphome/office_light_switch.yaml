@@ -1,0 +1,9 @@
+esphome:
+  name: office_light_switch
+  platform: ESP8266
+  board: d1_mini
+
+
+<<: !include common.yaml
+<<: !include servo_switch.yaml
+

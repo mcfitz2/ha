@@ -3,17 +3,7 @@ esphome:
   platform: ESP8266
   board: nodemcuv2
 
-wifi:
-  ssid: "NETGEAR10"
-  password: "fancyunicorn486"
-
-# Enable logging
-logger:
-
-# Enable Home Assistant API
-api:
-
-ota:
+<<: !include common.yaml
 
 switch:
   - platform: gpio

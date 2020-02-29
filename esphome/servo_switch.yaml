@@ -1,0 +1,38 @@
+# Example configuration entry
+switch:
+  - platform: template
+    name: "Switch"
+    id: servo_switch
+    turn_on_action:
+      - servo.write:
+          id: my_servo
+          level: 0.7
+      - delay: 2s
+      - servo.detach: my_servo
+    turn_off_action:
+      - servo.write:
+          id: my_servo
+          level: -1.0
+      - delay: 2s
+      - servo.detach: my_servo
+    optimistic: true
+
+
+servo:
+  - id: my_servo
+    output: pwm_output
+
+binary_sensor:
+  - platform: gpio
+    pin: D3
+    name: "Button"
+    on_press:
+      then:
+        - switch.toggle: servo_switch
+# Example output platform
+# On ESP32, use ledc output
+output:
+  - platform: esp8266_pwm
+    id: pwm_output
+    pin: D4
+    frequency: 50 Hz

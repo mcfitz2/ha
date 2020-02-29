@@ -1,0 +1,18 @@
+uart:
+  rx_pin: RX
+  baud_rate: 4800
+
+sensor:
+  - platform: cse7766
+    update_interval: 2s
+    current:
+      name: "Current"
+    voltage:
+      name: "Voltage"
+    power:
+      name: "Wattage"
+      
+switch:
+  - platform: gpio
+    name: "Switch"
+    pin: GPIO12

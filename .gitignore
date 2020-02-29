@@ -4,3 +4,13 @@ esphome/secrets.yaml
 plex-transcode
 plex-config
 *.log
+# Gitignore settings for ESPHome
+# This is an example and may include too much for your use-case.
+# You can modify this file to suit your needs.
+esphome/.esphome/
+esphome/**/.pioenvs/
+esphome/**/.piolibdeps/
+esphome/**/lib/
+esphome/**/src/
+esphome/**/platformio.ini
+/secrets.yaml

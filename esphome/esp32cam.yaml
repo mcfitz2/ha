@@ -3,17 +3,7 @@ esphome:
   platform: ESP32
   board: esp-wrover-kit
 
-wifi:
-  ssid: "NETGEAR10"
-  password: "fancyunicorn486"
-
-# Enable logging
-logger:
-
-# Enable Home Assistant API
-api:
-
-ota:
+<<: !include common.yaml
 
 # Example configuration entry
 esp32_camera:
