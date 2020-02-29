@@ -1,8 +1,11 @@
 stages:
   - build-deps
-  - pre-flight
+  - esphome-pre-flight
+  - services-build
+  - services-deploy
   - device-build
-esphome-builder:
+
+esphome-builder-build:
   stage: build-deps
   tags:
     - home
@@ -58,3 +61,20 @@ shop_lights_switch:
       - master
     changes:
       - esphome/shop_lights_switch.yaml
+
+
+homeassistant-build
+  stage: services-build
+  tags:
+    - home
+  script:
+    - aws s3 cp s3://${S3_BUCKET_NAME}/hass-secrets.yaml hass/secrets.yaml
+    - docker-compose build homeassistant
+
+homeassistant-deploy
+  stage: services-deploy
+  tags:
+    - home
+  script:
+    - docker-compose up -d homeassistant
+

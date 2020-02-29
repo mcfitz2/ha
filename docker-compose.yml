@@ -1,0 +1,87 @@
+version: '3'
+services:
+  octoprint:
+    image: octoprint/octoprint
+    container_name: octoprint
+    privileged: true
+    restart: always
+    ports:
+      - 5000:5000
+    volumes:
+#     - ./octoprint:/home/octoprint/.octoprint
+     - /dev:/dev
+  homeassistant:
+    container_name: home-assistant
+#    image: homeassistant/home-assistant
+    build: hass
+    privileged: true
+    volumes:
+#      - ./hass:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /dev:/dev
+    restart: always
+    network_mode: host
+    ports:
+      - 8123:8123
+  
+  mqtt:
+    restart: unless-stopped
+    image: eclipse-mosquitto
+    volumes:
+#      - ./mosquitto/config/mosquitto.conf:/mosquitto/config/mosquitto.conf
+#      - ./mosquitto/log:/mosquitto/log
+#      - ./mosquitto/data:/mosquitto/data
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+
+#  mjpg-streamer:
+#    restart: always
+#    privileged: true
+#    build: mjpg
+#    devices:
+#      - /dev/video0:/dev/video0
+#      - /dev/video1:/dev/video1
+#    ports:
+#      - 8090:8090
+#  postgres:
+#    image: postgres
+#    restart: always
+#    ports:
+#      - 5432:5432
+#    environment:
+#      POSTGRES_PASSWORD: cl0ser2g0d
+#      POSTGRES_USER: micah
+#    volumes:
+#      - ./postgres:/var/lib/postgresql/data
+  esphome:
+    build: esphome
+    container_name: esphome
+    network_mode: host
+    privileged: true
+    restart: always
+    ports:
+     - 6052:6052
+    volumes:
+      - /dev:/dev
+#      - ./esphome:/config
+#  gitlab-runner:
+#    build: gitlab-runner
+#    container_name: gitlab-runner
+#    restart: unless-stopped
+#    network_mode: host
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
+#  plex:
+#    container_name: plex
+#    image: plexinc/pms-docker
+#    restart: unless-stopped
+#    environment:
+#      - TZ=America/Chicago
+#      - PLEX_CLAIM=claim-xtgBENrFhTD8jTwr2xU4
+#    network_mode: host
+#    volumes:
+#      - ./plex-config:/config
+#      - ./plex-transcode:/transcode
+#      - /data:/dat
