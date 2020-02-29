@@ -19,8 +19,8 @@ tts:
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
-#switch: !include switches.yaml
-#light: !include lights.yaml
+switch: !include switches.yaml
+light: !include lights.yaml
 sensor: !include sensors.yaml
 
 #octoprint:
