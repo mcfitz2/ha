@@ -23,13 +23,13 @@ switch: !include switches.yaml
 light: !include lights.yaml
 sensor: !include sensors.yaml
 
-octoprint:
-  host: 192.168.1.107
-  api_key: !secret octoprint_api_key
-  name: Prusa MK3S
-  port: 5000
-  bed: true
-  number_of_tools: 1
+#octoprint:
+#  host: 192.168.1.107
+#  api_key: !secret octoprint_api_key
+#  name: Prusa MK3S
+#  port: 5000
+#  bed: true
+#  number_of_tools: 1
 
 zone:
   - name: UT
@@ -47,7 +47,7 @@ zone:
     radius: 200
 
 mqtt:
-  broker: localhost
+  broker: micahf.com
   port: 1883
 #  discovery: true
 #  discovery_prefix: homeassistant
