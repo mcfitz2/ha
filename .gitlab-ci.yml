@@ -33,6 +33,12 @@ check:
   tags:
     - home
 
+3d_printer_lights_switch:
+  <<: *device-build
+  script:
+    - sh devops/esphome_wrapper.sh 3d_printer_lights_switch.yaml run --no-logs
+
+
 office_temp_sensor:
   <<: *device-build
   script:
