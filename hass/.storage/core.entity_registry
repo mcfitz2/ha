@@ -1,0 +1,16 @@
+{"data":{"entities":[{
+                "capabilities": null,
+                "config_entry_id": null,
+                "device_class": null,
+                "device_id": null,
+                "disabled_by": null,
+                "entity_id": "binary_sensor.wyzesense_77836df3",
+                "icon": null,
+                "name": "Test Sensor",
+                "original_icon": null,
+                "original_name": null,
+                "platform": "wyzesense",
+                "supported_features": 0,
+                "unique_id": "77836DF3",
+                "unit_of_measurement": null
+            }]}}
