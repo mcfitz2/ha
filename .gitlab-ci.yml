@@ -16,7 +16,7 @@ esphome-builder-build:
     - docker build -t esphome-builder devops/esphome-builder
 
 check:
-  stage: pre-flight
+  stage: esphome-pre-flight
   before_script:
     - sh devops/esphome_wrapper.sh dummy.yaml version
   script:
