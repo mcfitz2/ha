@@ -1,9 +1,9 @@
 ---
 stages:
   - build-deps
-  - esphome-pre-flight
   - services-build
   - services-deploy
+  - esphome-pre-flight
   - device-build
 
 esphome-builder-build:
