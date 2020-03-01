@@ -20,4 +20,4 @@ esp32_camera:
   power_down_pin: GPIO32
 
   # Image settings
-  name: My Camera
+  name: My Camera# Sun Mar  1 17:05:41 CST 2020

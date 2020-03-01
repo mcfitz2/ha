@@ -16,4 +16,4 @@ switch:
     turn_on_action:
     - switch.turn_on: relay
     - delay: 500ms
-    - switch.turn_off: relay
+    - switch.turn_off: relay# Sun Mar  1 17:05:41 CST 2020
