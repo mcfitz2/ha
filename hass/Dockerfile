@@ -9,6 +9,6 @@ RUN git clone https://github.com/s3fs-fuse/s3fs-fuse.git; \
 	 make; \
 	 make install; \
 	 rm -rf /var/cache/apk/*;
- 
+
 ADD run.sh /
-CMD ["/run.sh"]
+CMD ["sh /run.sh"]
