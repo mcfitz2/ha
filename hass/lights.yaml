@@ -1,17 +1,15 @@
 ---
-- platform: mqtt
-  name: "Clock"
-  state_topic: "clock/status"
-  command_topic: "clock/switch"
-  brightness_state_topic: "clock/brightness/status"
-  brightness_command_topic: "clock/brightness/set"
-  rgb_state_topic: "clock/rgb/status"
-  rgb_command_topic: "clock/rgb/set"
-  state_value_template: "{{ value_json.state }}"
-  brightness_value_template: "{{ value_json.brightness }}"
-  rgb_value_template: "{{ value_json.rgb | join(',') }}"
-  qos: 0
-  payload_on: "ON"
-  payload_off: "OFF"
-  optimistic: false
-  on_command_type: "first"
+
+light:
+  - platform: mqtt
+    schema: json
+    brightness: true
+    rgb: true
+    effect: true
+    effect_list:
+      - "Time"
+      - "None"
+    name: "Word Clock"
+    state_topic: "wordclock/light/word_clock/state"
+    command_topic: "wordclock/light/word_clock/command"
+    availability_topic: "wordclock/status"
