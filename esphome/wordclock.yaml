@@ -3,17 +3,8 @@ esphome:
   platform: ESP8266
   board: nodemcuv2
 
-wifi:
-  ssid: "NETGEAR10"
-  password: "fancyunicorn486"
+<<: !include common.yaml
 
-# Enable logging
-logger:
-
-# Enable Home Assistant API
-api:
-
-ota:
 
 # Example configuration entry
 light:
@@ -22,7 +13,7 @@ light:
     pin: GPIO3
     num_leds: 60
     rgb_order: RGB
-    name: "FastLED WS2811 Light"
+    name: "Word Clock"
     default_transition_length: 0s
     id: strip
     effects:

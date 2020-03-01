@@ -63,6 +63,16 @@ shop_lights_switch:
     changes:
       - esphome/shop_lights_switch.yaml
 
+wordclock:
+  <<: *device-build
+  script:
+    - sh devops/esphome_wrapper.sh wordclock.yaml run --no-logs
+  only:
+    refs:
+      - master
+    changes:
+      - esphome/wordclock.yaml
+
 
 homeassistant-build:
   stage: services-build
