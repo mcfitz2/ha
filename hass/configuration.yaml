@@ -49,8 +49,8 @@ zone:
 mqtt:
   broker: micahf.com
   port: 1883
-#  discovery: true
-#  discovery_prefix: homeassistant
+  discovery: true
+  discovery_prefix: homeassistant
 device_tracker:
   - platform: mqtt_json
     devices:
