@@ -1,6 +1,7 @@
 ---
 - platform: mqtt
+  name: "Dryer Current"
   state_topic: "dryer/current/state"
   availability_topic: "dryer/status"
-  unit_of_measurement: amps
+  unit_of_measurement: "A"
 
