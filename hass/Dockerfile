@@ -11,4 +11,4 @@ RUN git clone https://github.com/s3fs-fuse/s3fs-fuse.git; \
 	 rm -rf /var/cache/apk/*;
 
 ADD run.sh /
-CMD ["sh /run.sh"]
+ENTRYPOINT ["sh", "/run.sh"]
