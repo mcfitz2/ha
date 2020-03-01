@@ -19,27 +19,27 @@ esphome-builder-build:
         - master
       changes:
         - esphome/*.yaml
-check:
-  stage: esphome-pre-flight
-  before_script:
-    - sh devops/esphome_wrapper.sh dummy.yaml version
-  script:
-    - |
-      for file in $(find \
-        ./esphome \
-        -type f \
-        -name "*.yaml"\
-        -not -name "secrets.yaml"
-        ); do
-        sh devops/esphome_wrapper.sh $(basename $file) config
-      done
-  tags:
-    - home
-  only:
-      refs:
-        - master
-      changes:
-        - esphome/*.yaml
+#check:
+#  stage: esphome-pre-flight
+#  before_script:
+#    - sh devops/esphome_wrapper.sh dummy.yaml version
+#  script:
+#    - |
+#     for file in $(find \
+#        ./esphome \
+#        -type f \
+#        -name "*.yaml"\
+#        -not -name "secrets.yaml"
+#        ); do
+#        sh devops/esphome_wrapper.sh $(basename $file) config
+#      done
+#  tags:
+#    - home
+#  only:
+#      refs:
+#        - master
+#      changes:
+#        - esphome/*.yaml
 
 .device-build: &device-build
   stage: device-build
@@ -109,7 +109,7 @@ homeassistant-build:
     refs:
       - master
     changes:
-      - esphome/wordclock.yaml
+      - hass/*
 
 
 homeassistant-deploy:
