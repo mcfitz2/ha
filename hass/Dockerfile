@@ -1,12 +1,20 @@
 FROM homeassistant/home-assistant
 
-RUN apt-get update -q && apt-get install -y python-pip fuse \
- && apt-get clean -y && rm -rf /var/lib/apt/lists/* \
- && pip install yas3fs \
- # uncomment user_allow_other
- && sed -i'' 's/^# *user_allow_other/user_allow_other/' /etc/fuse.conf \
- # make it readable by anybody, it is not the default on Ubuntu
- && chmod a+r /etc/fuse.conf
- 
+ENV PYTHONUNBUFFERED=1
+
+RUN echo "**** install Python ****" && \
+    apk add --no-cache python3 && \
+    if [ ! -e /usr/bin/python ]; then ln -sf python3 /usr/bin/python ; fi && \
+    \
+    echo "**** install pip ****" && \
+    python3 -m ensurepip && \
+    rm -r /usr/lib/python*/ensurepip && \
+    pip3 install --no-cache --upgrade pip setuptools wheel && \
+    if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi
+
+RUN pip install yas3fs \
+ 	&& sed -i'' 's/^# *user_allow_other/user_allow_other/' /etc/fuse.conf \
+ 	&& chmod a+r /etc/fuse.conf
+
 ADD run.sh /
 CMD ["/run.sh"]
