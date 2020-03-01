@@ -12,11 +12,11 @@ services:
      - /dev:/dev
   homeassistant:
     container_name: home-assistant
-#    image: homeassistant/home-assistant
-    build: hass
+    image: homeassistant/home-assistant
+#    build: hass
     privileged: true
     volumes:
-#      - ./hass:/config
+      - ./hass:/config
       - /etc/localtime:/etc/localtime:ro
       - /dev:/dev
     restart: always

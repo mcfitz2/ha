@@ -87,4 +87,6 @@ homeassistant-deploy:
   tags:
     - home
   script:
+    - docker-compose stop homeassistant
+    - ssh micah@localhost sh -c "cd /home/micah/ha/; git pull"
     - docker-compose up -d homeassistant
