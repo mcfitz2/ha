@@ -119,3 +119,5 @@ homeassistant-deploy:
   script:
     - aws s3 cp s3://${SECRETS_BUCKET}/secrets.env secrets.env
     - docker-compose up -d homeassistant
+  dependencies:
+    - homeassistant-build
