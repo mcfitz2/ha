@@ -77,6 +77,15 @@ wordclock:
     changes:
       - esphome/wordclock.yaml
 
+dryer:
+  <<: *device-build
+  script:
+    - sh devops/esphome_wrapper.sh dryer.yaml run --no-logs
+  only:
+    refs:
+      - master
+    changes:
+      - esphome/dryer.yaml
 
 homeassistant-build:
   stage: services-build
@@ -94,4 +103,4 @@ homeassistant-deploy:
     - home
   script:
     - aws s3 cp s3://${SECRETS_BUCKET}/secrets.env secrets.env
-    - docker-compose up -d --force-recreate homeassistant
+    - docker-compose up -d homeassistant

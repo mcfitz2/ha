@@ -65,14 +65,6 @@ notify:
     platform: pushbullet
     api_key: !secret pushbullet_api_key
 
-counter:
-  litter_box_visits:
-    initial: 0
-    step: 1
-  cheddar_feedings:
-    initial: 0
-    step: 1
-
 frontend:
   !include themes.yaml
 #recorder:
@@ -81,11 +73,11 @@ frontend:
 ffmpeg:
   ffmpeg_bin: /usr/bin/ffmpeg
 
-camera:
-  - platform: mjpeg
-    name: OctoPrint
-    still_image_url: http://192.168.1.107:8090?action=snapshot
-    mjpeg_url: http://192.168.1.107?action=stream
+#camera:
+#  - platform: mjpeg
+#    name: OctoPrint
+#    still_image_url: http://192.168.1.107:8090?action=snapshot
+#    mjpeg_url: http://192.168.1.107?action=stream
 
 binary_sensor:
   - platform: threshold
