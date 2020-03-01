@@ -1,4 +1,4 @@
-FROM home-assistant/homeassistant:latest
+FROM homeassistant/home-assistant
 
 RUN apt-get update -q && apt-get install -y python-pip fuse \
  && apt-get clean -y && rm -rf /var/lib/apt/lists/* \
