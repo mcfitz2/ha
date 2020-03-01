@@ -1,8 +1,6 @@
 ---
 stages:
   - build-deps
-  - services-build
-  - services-deploy
   - esphome-pre-flight
   - device-build
 
@@ -12,13 +10,13 @@ esphome-builder-build:
     - home
   script:
     - aws s3 cp s3://${SECRETS_BUCKET}/esphome-secrets.yaml devops/esphome-builder/secrets.yaml
-    - cp esphome/*.yaml devops/esphome-builder
+    - cp *.yaml devops/esphome-builder
     - docker build -t esphome-builder devops/esphome-builder
   only:
       refs:
         - master
       changes:
-        - esphome/*.yaml
+        - *.yaml
 #check:
 #  stage: esphome-pre-flight
 #  before_script:
@@ -54,7 +52,7 @@ esphome-builder-build:
     refs:
       - master
     changes:
-      - esphome/3d_printer_lights_switch.yaml
+      - 3d_printer_lights_switch.yaml
 
 office_temp_sensor:
   <<: *device-build
@@ -64,7 +62,7 @@ office_temp_sensor:
     refs:
       - master
     changes:
-      - esphome/temp-sensor-office.yaml
+      - temp-sensor-office.yaml
 
 shop_lights_switch:
   <<: *device-build
@@ -74,7 +72,7 @@ shop_lights_switch:
     refs:
       - master
     changes:
-      - esphome/shop_lights_switch.yaml
+      - shop_lights_switch.yaml
 
 wordclock:
   <<: *device-build
@@ -84,7 +82,7 @@ wordclock:
     refs:
       - master
     changes:
-      - esphome/wordclock.yaml
+      - wordclock.yaml
 
 dryer:
   <<: *device-build
@@ -94,53 +92,4 @@ dryer:
     refs:
       - master
     changes:
-      - esphome/dryer.yaml
-
-homeassistant-build:
-  stage: services-build
-  tags:
-    - home
-  script:
-    - aws s3 cp s3://${SECRETS_BUCKET}/hass-secrets.yaml hass/secrets.yaml
-    - aws s3 cp s3://${SECRETS_BUCKET}/secrets.env secrets.env
-    - aws s3 cp hass "s3://${PERSIST_BUCKET}/" --recursive
-    - docker-compose build homeassistant
-  only:
-    refs:
-      - master
-    changes:
-      - hass/*
-
-esphome-build:
-  stage: services-build
-  tags:
-    - home
-  script:
-    - aws s3 cp s3://${SECRETS_BUCKET}/secrets.env secrets.env
-    - aws s3 cp s3://${SECRETS_BUCKET}/esphome-secrets.yaml esphome/secrets.yaml
-    - docker-compose build esphome
-  only:
-    refs:
-      - master
-    changes:
-      - esphome/*
-
-esphome-deploy:
-  stage: services-deploy
-  tags:
-    - home
-  script:
-    - aws s3 cp s3://${SECRETS_BUCKET}/secrets.env secrets.env
-    - docker-compose up -d esphome
-  dependencies:
-    - homeassistant-build
-
-homeassistant-deploy:
-  stage: services-deploy
-  tags:
-    - home
-  script:
-    - aws s3 cp s3://${SECRETS_BUCKET}/secrets.env secrets.env
-    - docker-compose up -d homeassistant
-  dependencies:
-    - homeassistant-build
+      - dryer.yaml
