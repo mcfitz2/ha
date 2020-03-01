@@ -11,7 +11,7 @@ esphome-builder-build:
   tags:
     - home
   script:
-    - aws s3 cp s3://${S3_BUCKET_NAME}/esphome-secrets.yaml devops/esphome-builder/secrets.yaml
+    - aws s3 cp s3://${SECRETS_BUCKET}/esphome-secrets.yaml devops/esphome-builder/secrets.yaml
     - cp esphome/*.yaml devops/esphome-builder
     - docker build -t esphome-builder devops/esphome-builder
 
@@ -79,7 +79,9 @@ homeassistant-build:
   tags:
     - home
   script:
-    - aws s3 cp s3://${S3_BUCKET_NAME}/hass-secrets.yaml hass/secrets.yaml
+    - aws s3 cp s3://${SECRETS_BUCKET}/hass-secrets.yaml hass/secrets.yaml
+    - aws s3 cp s3://${SECRETS_BUCKET}/secrets.env secrets.env
+    - aws s3 cp hass "s3://${PERSIST_BUCKET}/" --recursive
     - docker-compose build homeassistant
 
 homeassistant-deploy:
@@ -87,9 +89,5 @@ homeassistant-deploy:
   tags:
     - home
   script:
-    - docker-compose stop homeassistant
-    - aws s3 cp s3://${S3_BUCKET_NAME}/runner.key runner.key
-    - ssh-keygen -R 192.168.1.107
-    - ssh-keygen -R localhost
-    - ssh micah@192.168.1.107 -i runner.key sh -c "cd /home/micah/ha/; git pull"
-    - docker-compose up -d homeassistant
+    - aws s3 cp s3://${SECRETS_BUCKET}/secrets.env secrets.env
+    - docker-compose up -d --force-recreate homeassistant

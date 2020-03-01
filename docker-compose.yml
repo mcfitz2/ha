@@ -13,16 +13,20 @@ services:
   homeassistant:
     container_name: home-assistant
     image: homeassistant/home-assistant
-#    build: hass
+    build: hass
     privileged: true
     volumes:
-      - ./hass:/config
+      #- ./hass:/config
       - /etc/localtime:/etc/localtime:ro
       - /dev:/dev
     restart: always
     network_mode: host
     ports:
       - 8123:8123
+    environment:
+      - S3_PATH=ha-persist
+    env_file:
+      - secrets.env
   
   mqtt:
     restart: unless-stopped
