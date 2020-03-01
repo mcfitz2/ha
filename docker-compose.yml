@@ -12,7 +12,7 @@ services:
      - /dev:/dev
   homeassistant:
     container_name: home-assistant
-    image: homeassistant/home-assistant
+    #image: homeassistant/home-assistant
     build: hass
     privileged: true
     volumes:
