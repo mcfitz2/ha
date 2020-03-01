@@ -89,5 +89,5 @@ homeassistant-deploy:
   script:
     - docker-compose stop homeassistant
     - aws s3 cp s3://${S3_BUCKET_NAME}/runner.key runner.key
-    - ssh micah@localhost -i runner.key sh -c "cd /home/micah/ha/; git pull"
+    - ssh micah@192.168.1.107 -i runner.key sh -c "cd /home/micah/ha/; git pull"
     - docker-compose up -d homeassistant
