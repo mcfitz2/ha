@@ -49,7 +49,7 @@ services:
 #      - /dev/video1:/dev/video1
 #    ports:
 #      - 8090:8090
- postgres:
+  postgres:
    image: postgres
    restart: always
    environment:
