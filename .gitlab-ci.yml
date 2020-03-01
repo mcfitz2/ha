@@ -14,7 +14,11 @@ esphome-builder-build:
     - aws s3 cp s3://${SECRETS_BUCKET}/esphome-secrets.yaml devops/esphome-builder/secrets.yaml
     - cp esphome/*.yaml devops/esphome-builder
     - docker build -t esphome-builder devops/esphome-builder
-
+  only:
+      refs:
+        - master
+      changes:
+        - esphome/*.yaml
 check:
   stage: esphome-pre-flight
   before_script:
@@ -31,6 +35,11 @@ check:
       done
   tags:
     - home
+  only:
+      refs:
+        - master
+      changes:
+        - esphome/*.yaml
 
 .device-build: &device-build
   stage: device-build
@@ -96,6 +105,12 @@ homeassistant-build:
     - aws s3 cp s3://${SECRETS_BUCKET}/secrets.env secrets.env
     - aws s3 cp hass "s3://${PERSIST_BUCKET}/" --recursive
     - docker-compose build homeassistant
+  only:
+    refs:
+      - master
+    changes:
+      - esphome/wordclock.yaml
+
 
 homeassistant-deploy:
   stage: services-deploy

@@ -9,7 +9,7 @@ esphome:
 sensor:
   - platform: ct_clamp
     sensor: adc_sensor
-    name: "Current"
+    name: "Current2"
     update_interval: 5s
     filters:
       - calibrate_linear:
