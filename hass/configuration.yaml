@@ -6,15 +6,15 @@ homeassistant:
   customize: !include customize.yaml
   
 config:
-updater:
+#updater:
 #discovery:
-history:
-logbook:
+#history:
+#logbook:
 map:
 sun:
 cloud:
-tts:
-  platform: google_translate
+#tts:
+#  platform: google_translate
 
 group: !include groups.yaml
 automation: !include automations.yaml
@@ -32,15 +32,6 @@ sensor: !include sensors.yaml
 #  number_of_tools: 1
 
 zone:
-  - name: UT
-    latitude: 30.28554
-    longitude: -97.7395817
-    radius: 1000
-    icon: mdi:school
-  - name: General Motors
-    latitude: 30.413004
-    longitude: -97.6624797
-    radius: 500
   - name: Home
     latitude: 30.357821
     longitude: -97.729185
@@ -55,15 +46,15 @@ device_tracker:
   - platform: mqtt_json
     devices:
       micahs_phone: location/micah
-  - platform: automatic
-    client_id: !secret automatic_client_id
-    secret: !secret automatic_client_secret
+#  - platform: automatic
+#    client_id: !secret automatic_client_id
+#    secret: !secret automatic_client_secret
 
 
-notify:
-  - name: pushbullet
-    platform: pushbullet
-    api_key: !secret pushbullet_api_key
+#notify:
+#  - name: pushbullet
+#    platform: pushbullet
+#    api_key: !secret pushbullet_api_key
 
 frontend:
   !include themes.yaml
@@ -97,11 +88,11 @@ binary_sensor:
   - platform: workday
     country: US
 
-climate:
-  - platform: honeywell
-    username: mcfitz2@gmail.com
-    password: !secret honeywell_pass
-    region: us
+#climate:
+#  - platform: honeywell
+#    username: mcfitz2@gmail.com
+#    password: !secret honeywell_pass
+#    region: us
 
 cover:
   - platform: template
@@ -135,7 +126,7 @@ input_boolean:
   tv_assumed_state:
     name: TV Assumed State
     initial: off
-weather:
-  - platform: darksky
-    api_key: !secret dark_sky_api_key
-    mode: daily
+#weather:
+#  - platform: darksky
+#    api_key: !secret dark_sky_api_key
+#    mode: daily

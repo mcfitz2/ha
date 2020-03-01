@@ -4,4 +4,3 @@
   state_topic: "dryer/current/state"
   availability_topic: "dryer/status"
   unit_of_measurement: "A"
-

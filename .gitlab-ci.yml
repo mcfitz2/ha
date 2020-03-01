@@ -111,6 +111,27 @@ homeassistant-build:
     changes:
       - hass/*
 
+esphome-build:
+  stage: services-build
+  tags:
+    - home
+  script:
+    - aws s3 cp s3://${SECRETS_BUCKET}/esphome-secrets.yaml hass/secrets.yaml
+    - docker-compose build esphome
+  only:
+    refs:
+      - master
+    changes:
+      - esphome/*
+
+esphome-deploy:
+  stage: services-deploy
+  tags:
+    - home
+  script:
+    - docker-compose up -d esphome
+  dependencies:
+    - homeassistant-build
 
 homeassistant-deploy:
   stage: services-deploy
