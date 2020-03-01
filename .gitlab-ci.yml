@@ -116,7 +116,8 @@ esphome-build:
   tags:
     - home
   script:
-    - aws s3 cp s3://${SECRETS_BUCKET}/esphome-secrets.yaml hass/secrets.yaml
+    - aws s3 cp s3://${SECRETS_BUCKET}/secrets.env secrets.env
+    - aws s3 cp s3://${SECRETS_BUCKET}/esphome-secrets.yaml esphome/secrets.yaml
     - docker-compose build esphome
   only:
     refs:
@@ -129,6 +130,7 @@ esphome-deploy:
   tags:
     - home
   script:
+    - aws s3 cp s3://${SECRETS_BUCKET}/secrets.env secrets.env
     - docker-compose up -d esphome
   dependencies:
     - homeassistant-build
