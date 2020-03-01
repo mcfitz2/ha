@@ -1,17 +1,4 @@
 ---
-- platform: fitbit
-  clock_format: 12H
-  monitored_resources:
-    - "body/weight"
-    - "activities/steps"
-- platform: template
-  sensors:
-    litter_box_visits:
-      friendly_name: "Litter Box Visits"
-      unit_of_measurement: 'times'
-      value_template: "{{ states('counter.litter_box_visits') }}"
-    cheddar_feedings:
-      friendly_name: "Cheddar Meals"
-      unit_of_measurement: 'meals'
-      value_template: "{{ states('counter.cheddar_feedings') }}"
+
+
 

@@ -1,17 +1,5 @@
 ---
 - platform: mqtt
-  name: "3D Printer"
-  state_topic: "sonoff-overhead/stat/RESULT"
-  value_template: "{{ value_json.POWER }}"
-  command_topic: "sonoff-overhead/cmnd/POWER"
-  availability_topic: "sonoff-overhead/tele/LWT"
-  qos: 1
-  payload_on: "ON"
-  payload_off: "OFF"
-  payload_available: "Online"
-  payload_not_available: "Offline"
-  retain: true
-- platform: mqtt
   name: "Kenwood_IR"
   command_topic: "mqtt-lirc/Kenwood/KEY_POWER"
   payload_on: "on"

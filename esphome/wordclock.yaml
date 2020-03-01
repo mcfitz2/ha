@@ -51,4 +51,5 @@ light:
 time:
   - platform: sntp
     id: sntp_time
+    timezone: America/Chicago
 

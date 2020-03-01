@@ -1,15 +1,13 @@
 ---
-
-light:
-  - platform: mqtt
-    schema: json
-    brightness: true
-    rgb: true
-    effect: true
-    effect_list:
-      - "Time"
-      - "None"
-    name: "Word Clock"
-    state_topic: "wordclock/light/word_clock/state"
-    command_topic: "wordclock/light/word_clock/command"
-    availability_topic: "wordclock/status"
+- platform: mqtt
+  schema: json
+  brightness: true
+  rgb: true
+  effect: true
+  effect_list:
+    - "Time"
+    - "None"
+  name: "Word Clock"
+  state_topic: "wordclock/light/word_clock/state"
+  command_topic: "wordclock/light/word_clock/command"
+  availability_topic: "wordclock/status"
