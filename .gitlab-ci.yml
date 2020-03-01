@@ -41,7 +41,11 @@ check:
   <<: *device-build
   script:
     - sh devops/esphome_wrapper.sh 3d_printer_lights_switch.yaml run --no-logs
-
+  only:
+    refs:
+      - master
+    changes:
+      - esphome/3d_printer_lights_switch.yaml
 
 office_temp_sensor:
   <<: *device-build
