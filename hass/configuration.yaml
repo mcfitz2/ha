@@ -4,9 +4,7 @@ homeassistant:
   unit_system: imperial
   time_zone: America/Chicago
   customize: !include customize.yaml
-  auth_providers:
-    - type: command_line
-      command: /bin/true
+  
 config:
 updater:
 #discovery:
