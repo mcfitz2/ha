@@ -13,10 +13,10 @@ esphome-builder-build:
     - cp *.yaml devops/esphome-builder
     - docker build -t esphome-builder devops/esphome-builder
   only:
-      refs:
-        - master
-      changes:
-        - *.yaml
+    refs:
+     - master
+    changes:
+      - *.yaml
 #check:
 #  stage: esphome-pre-flight
 #  before_script:
