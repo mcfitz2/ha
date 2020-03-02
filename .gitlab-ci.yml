@@ -12,11 +12,6 @@ esphome-builder-build:
     - aws s3 cp s3://${SECRETS_BUCKET}/esphome-secrets.yaml devops/esphome-builder/secrets.yaml
     - cp *.yaml devops/esphome-builder
     - docker build -t esphome-builder devops/esphome-builder
-  only:
-    refs:
-     - master
-    changes:
-      - *.yaml
 #check:
 #  stage: esphome-pre-flight
 #  before_script:
