@@ -88,3 +88,12 @@ dryer:
       - master
     changes:
       - dryer.yaml
+office_light_switch:
+  <<: *device-build
+  script:
+    - sh devops/esphome_wrapper.sh office_light_switch.yaml run --no-logs
+  only:
+    refs:
+      - master
+    changes:
+      - office_light_switch.yaml
