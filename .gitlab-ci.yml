@@ -97,3 +97,12 @@ office_light_switch:
       - master
     changes:
       - office_light_switch.yaml
+floor_lamp_switch:
+  <<: *device-build
+  script:
+    - sh devops/esphome_wrapper.sh floor_lamp_switch.yaml run --no-logs
+  only:
+    refs:
+      - master
+    changes:
+      - floor_lamp_switch.yaml
