@@ -10,13 +10,13 @@ switch:
     turn_on_action:
       - servo.write:
           id: my_servo
-          level: 0.7
+          level: 0.5
       - delay: 2s
       - servo.detach: my_servo
     turn_off_action:
       - servo.write:
           id: my_servo
-          level: -1.0
+          level: 0
       - delay: 2s
       - servo.detach: my_servo
     optimistic: true
