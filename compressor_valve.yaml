@@ -37,7 +37,7 @@ binary_sensor:
 output:
   - platform: esp8266_pwm
     id: pwm_output
-    pin: GPIO3
+    pin: D4
     frequency: 50 Hz
 
 # Sun Mar  1 17:05:41 CST 2020
