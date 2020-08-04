@@ -4,7 +4,6 @@ esphome:
   board: esp01_1m
 
 <<: !include common.yaml
-
 switch:
   - platform: template
     name: "Switch"
