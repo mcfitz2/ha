@@ -4,6 +4,8 @@ esphome:
   board: esp01_1m
 
 <<: !include common.yaml
+wifi:
+  use_address: floor_lamp_switch.local
 switch:
   - platform: template
     name: "Switch"
