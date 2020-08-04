@@ -1,12 +1,9 @@
 esphome:
-  name: compressor
+  name: compressor-valve
   platform: ESP8266
   board: esp01_1m
 
 switch:
-  - platform: gpio
-    name: "Power"
-    pin: GPIO12
   - platform: template
     name: "Valve"
     id: servo_switch
@@ -43,9 +40,6 @@ output:
     pin: GPIO3
     frequency: 50 Hz
 
-logger:
-  baud_rate: 0
-
 # Sun Mar  1 17:05:41 CST 2020
 <<: !include secrets.yaml
 wifi:
@@ -57,3 +51,4 @@ api:
 
 ota:
 
+logger:

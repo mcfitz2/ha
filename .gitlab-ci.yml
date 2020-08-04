@@ -97,12 +97,21 @@ office_light_switch:
       - master
     changes:
       - office_light_switch.yaml
-floor_lamp_switch:
+compressor_valve:
   <<: *device-build
   script:
-    - sh devops/esphome_wrapper.sh floor_lamp_switch.yaml run --no-logs
+    - sh devops/esphome_wrapper.sh compressor_valve.yaml run --no-logs
   only:
     refs:
       - master
     changes:
-      - floor_lamp_switch.yaml
+      - compressor_valve.yaml
+compressor_power:
+  <<: *device-build
+  script:
+    - sh devops/esphome_wrapper.sh compressor_power.yaml run --no-logs
+  only:
+    refs:
+      - master
+    changes:
+      - compressor_power.yaml
