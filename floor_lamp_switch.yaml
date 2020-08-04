@@ -23,7 +23,6 @@ switch:
       - servo.detach: my_servo
     optimistic: true
 
-
 servo:
   - id: my_servo
     output: pwm_output
