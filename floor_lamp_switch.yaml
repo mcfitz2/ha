@@ -40,7 +40,7 @@ binary_sensor:
 output:
   - platform: esp8266_pwm
     id: pwm_output
-    pin: GPIO1
+    pin: GPIO3
     frequency: 50 Hz
 
 logger:
