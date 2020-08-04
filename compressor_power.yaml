@@ -21,7 +21,6 @@ binary_sensor:
 wifi:
   ssid: ${wifi_ssid}
   password: ${wifi_pass}
-  use_address: compressor.local
 # Enable Home Assistant API
 api:
 

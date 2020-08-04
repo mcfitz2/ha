@@ -1,5 +1,5 @@
 esphome:
-  name: compressor-valve
+  name: compressor_valve
   platform: ESP8266
   board: esp01_1m
 
