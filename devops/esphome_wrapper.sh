@@ -1,4 +1,4 @@
-docker run -t --rm --net=host esphome-builder "$@" | tee output.log
+docker run -t --rm  --net=host esphome-builder "$@" | tee output.log
 EC=$?
 ERR=$(cat output.log | tail -n2 |grep ERROR)
 rm output.log
