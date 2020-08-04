@@ -4,8 +4,11 @@ esphome:
   board: esp01_1m
 
 switch:
+  - platform: gpio
+    name: "Power"
+    pin: GPIO12
   - platform: template
-    name: "Switch"
+    name: "Valve"
     id: servo_switch
     turn_on_action:
       - servo.write:
