@@ -3,9 +3,6 @@ esphome:
   platform: ESP8266
   board: esp01_1m
 
-<<: !include common.yaml
-wifi:
-  use_address: floor_lamp_switch.local
 switch:
   - platform: template
     name: "Switch"
@@ -47,3 +44,14 @@ logger:
   baud_rate: 0
 
 # Sun Mar  1 17:05:41 CST 2020
+<<: !include secrets.yaml
+wifi:
+  ssid: ${wifi_ssid}
+  password: ${wifi_pass}
+  use_address: floor_lamp_switch.local
+
+# Enable Home Assistant API
+api:
+
+ota:
+
